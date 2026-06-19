@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://whitemaix.github.io/official-main-mk-com/sitemap.xml

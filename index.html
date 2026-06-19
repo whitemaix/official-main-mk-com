@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mk体育 · 知识索引 | 运动与赛事综合库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fff3e0 0%, #ffedd5 45%, #fde4c8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+            color: #2d2a24;
+        }
+
+        .container {
+            max-width: 1240px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* hero 标题区 */
+        .hero {
+            text-align: center;
+            padding: 2.8rem 1.8rem 2rem;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(6px);
+            border-radius: 48px 48px 28px 28px;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 12px 30px rgba(180, 120, 60, 0.12);
+            border: 1px solid rgba(255, 235, 210, 0.7);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #6b3f1d;
+            background: linear-gradient(135deg, #7d4e2a, #a8693b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.7rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #5c4a36;
+            max-width: 720px;
+            margin: 0 auto;
+            background: rgba(255, 245, 235, 0.6);
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            display: inline-block;
+            backdrop-filter: blur(2px);
+        }
+
+        /* 卡片网格 — 目录感布局 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .card {
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            border-radius: 28px;
+            padding: 1.8rem 1.6rem 1.6rem;
+            box-shadow: 0 8px 24px rgba(160, 100, 40, 0.08), 0 2px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #fff6eb;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 36px rgba(150, 90, 30, 0.10);
+            border-color: #fadbc0;
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #7b4b24;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card h2 span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #e6b17e;
+            border-radius: 20px;
+            margin-right: 6px;
+        }
+
+        .card p, .card li {
+            color: #3f382f;
+            font-size: 0.98rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0.2rem;
+        }
+
+        .card ul li {
+            padding-left: 1.2rem;
+            position: relative;
+            margin-bottom: 0.4rem;
+        }
+
+        .card ul li::before {
+            content: "·";
+            color: #c9844f;
+            font-weight: bold;
+            position: absolute;
+            left: 0.1rem;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+        }
+
+        .tag {
+            background: #f8ede2;
+            color: #6d4c2c;
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid #ecdccb;
+        }
+
+        /* 提示区 + 相关信息区 */
+        .info-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .info-block {
+            background: #fffffffa;
+            border-radius: 28px;
+            padding: 1.6rem 1.8rem;
+            border: 1px solid #faead9;
+            box-shadow: 0 6px 18px rgba(150, 90, 30, 0.05);
+            backdrop-filter: blur(2px);
+        }
+
+        .info-block h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #7b4b24;
+            margin-bottom: 0.7rem;
+            border-bottom: 2px solid #f3dcc8;
+            padding-bottom: 0.3rem;
+            display: inline-block;
+        }
+
+        .info-block p, .info-block li {
+            color: #3f382f;
+            font-size: 0.98rem;
+        }
+
+        .info-block ul {
+            list-style: none;
+            padding-left: 0.2rem;
+            margin-top: 0.3rem;
+        }
+
+        .info-block ul li {
+            padding-left: 1.2rem;
+            position: relative;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-block ul li::before {
+            content: "›";
+            color: #c9844f;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* FAQ 摘要区 */
+        .faq-section {
+            background: #fffffffa;
+            border-radius: 28px;
+            padding: 1.8rem 2rem 1.6rem;
+            margin-bottom: 2.8rem;
+            border: 1px solid #faebdb;
+            box-shadow: 0 6px 18px rgba(160, 100, 40, 0.04);
+        }
+
+        .faq-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #7b4b24;
+            margin-bottom: 1rem;
+            letter-spacing: 0.01em;
+        }
+
+        .faq-item {
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #f7e6d6;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-item strong {
+            color: #5a3e26;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.1rem;
+        }
+
+        .faq-item p {
+            color: #4d4033;
+            font-size: 0.95rem;
+        }
+
+        /* 页脚 — 自然嵌入链接 */
+        .footer-note {
+            text-align: center;
+            padding: 1.2rem 1rem 0.2rem;
+            font-size: 0.95rem;
+            color: #5f4e3c;
+            background: rgba(255, 245, 235, 0.3);
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+            border: 1px solid #f5e0ce;
+        }
+
+        .footer-note a {
+            color: #964b1e;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.1rem 0.4rem;
+            border-radius: 30px;
+            background: rgba(233, 193, 159, 0.18);
+            transition: background 0.2s;
+        }
+
+        .footer-note a:hover {
+            background: #eacdb3;
+            color: #5f3219;
+        }
+
+        /* 响应式 */
+        @media (max-width: 720px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0.3rem 1rem;
+            }
+
+            .info-row {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+
+            .faq-section {
+                padding: 1.3rem 1.2rem;
+            }
+
+            .footer-note {
+                font-size: 0.88rem;
+                padding: 0.8rem 0.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .grid {
+                gap: 1.2rem;
+            }
+
+            .info-block {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- hero 标题区 -->
+        <header class="hero">
+            <h1>mk体育 · 知识索引</h1>
+            <p>赛事 · 训练 · 装备 · 规则 · 文化</p>
+        </header>
+
+        <!-- 核心卡片：目录感布局，按主题展开 -->
+        <div class="grid">
+            <div class="card">
+                <h2><span></span>赛事体系</h2>
+                <p>从职业联赛到社区杯赛，覆盖<strong>足球、篮球、网球、田径、格斗</strong>等主流项目。赛事结构、赛程日历、排名机制与晋级规则均可溯源。</p>
+                <div class="tag-group">
+                    <span class="tag">五大联赛</span>
+                    <span class="tag">NBA</span>
+                    <span class="tag">大满贯</span>
+                    <span class="tag">钻石联赛</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span></span>训练与体能</h2>
+                <p>专项力量、间歇跑、核心稳定、敏捷梯 —— 按运动项目拆解周期化训练思路，包含恢复策略与损伤预防基础。</p>
+                <div class="tag-group">
+                    <span class="tag">周期化</span>
+                    <span class="tag">心率分区</span>
+                    <span class="tag">功能性训练</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span></span>装备与场地</h2>
+                <p>球拍、跑鞋、护具、场地规格、计时系统 … 装备参数与认证标准简明整理，便于对比与选型参考。</p>
+                <div class="tag-group">
+                    <span class="tag">足钉类型</span>
+                    <span class="tag">球拍磅数</span>
+                    <span class="tag">跑道认证</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span></span>规则与裁判</h2>
+                <p>越位、违体、计分差异、视频助理裁判（VAR）流程、称重规则 … 分项目整理裁判手势与判罚依据。</p>
+                <div class="tag-group">
+                    <span class="tag">FIBA vs NBA</span>
+                    <span class="tag">VAR 介入</span>
+                    <span class="tag">格斗分级</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span></span>运动文化</h2>
+                <p>经典赛事历史、传奇运动员档案、各项目术语沿革、球迷文化现象 —— 从知识角度理解体育社会脉络。</p>
+                <div class="tag-group">
+                    <span class="tag">德比渊源</span>
+                    <span class="tag">纪录列表</span>
+                    <span class="tag">名人堂</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span></span>数据与记录</h2>
+                <p>联赛积分、选手统计、历史纪录、实时排名 … 提供结构化数据索引入口（非实时数据源，仅梳理字段与口径）。</p>
+                <div class="tag-group">
+                    <span class="tag">PER</span>
+                    <span class="tag">ELO</span>
+                    <span class="tag">世界排名</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 说明区 + 提示区（双栏） -->
+        <div class="info-row">
+            <div class="info-block">
+                <h3>说明</h3>
+                <p>本索引围绕<strong>mk体育</strong>内容领域整理，聚焦运动项目的基础知识结构。所有信息均整理自公开赛事手册、训练学教材及体育管理机构发布资料。索引用于信息导航，不替代官方实时数据或专业教练指导。</p>
+                <ul>
+                    <li>各板块持续补充细节条目</li>
+                    <li>规则差异部分以最新版本为准</li>
+                    <li>装备参数仅供参考，以实物为准</li>
+                </ul>
+            </div>
+            <div class="info-block">
+                <h3>提示</h3>
+                <p>运动前请充分热身，根据自身情况选择强度。涉及规则、训练计划或康复内容时，建议咨询对应领域专业人士。本页为知识库入口，更详细的专题页可通过 <a href="https://official-main-mk.com">mk体育</a> 进一步查阅。</p>
+                <p style="margin-top: 0.6rem;">训练周期与恢复窗口等概念可结合专项指南理解，避免盲目堆量。</p>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要区 -->
+        <div class="faq-section">
+            <h3>常见主题摘要</h3>
+            <div class="faq-item">
+                <strong>▸ 不同项目对装备重量有统一标准吗？</strong>
+                <p>多数项目有最低/最高重量限制（如网球拍、拳击手套），但品牌间存在偏差。建议以各项目联合会最新规则手册为准。</p>
+            </div>
+            <div class="faq-item">
+                <strong>▸ VAR 在哪些赛事中全面采用？</strong>
+                <p>目前欧洲五大联赛、欧冠、世界杯、中超等均已引入，但具体介入阈值略有不同。部分低级别联赛仍以传统裁判执裁为主。</p>
+            </div>
+            <div class="faq-item">
+                <strong>▸ 力量训练是否必须使用自由重量？</strong>
+                <p>自由重量与固定器械各有适用场景。对于初学者，器械可提供稳定轨迹；进阶阶段自由重量更利于神经适应与功能性发展。</p>
+            </div>
+        </div>
+
+        <!-- 页脚：自然嵌入链接 + 相关信息区 -->
+        <footer class="footer-note">
+            <p>基于体育知识结构整理 · 更多项目深度内容可参阅 <a href="https://official-main-mk.com">mk体育</a>  · 索引持续修订</p>
+            <p style="margin-top: 0.3rem; font-size: 0.85rem; color: #6f5b48;">内容方向：赛事 · 训练 · 装备 · 规则 · 文化 · 数据</p>
+        </footer>
+    </div>
+</body>
+</html>
